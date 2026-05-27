@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -g   CMakeFiles/echo_server.dir/main.c.o CMakeFiles/echo_server.dir/server_init.c.o  -o ../bin/echo_server 

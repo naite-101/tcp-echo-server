@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/naite/TCP Echo Server/include/common.h
+
+/home/naite/TCP Echo Server/src/main.c
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+../include/common.h
+/home/naite/TCP Echo Server/include/common.h
+server_init.h
+/home/naite/TCP Echo Server/src/server_init.h
+
+/home/naite/TCP Echo Server/src/server_init.c
+server_init.h
+/home/naite/TCP Echo Server/src/server_init.h
+../include/common.h
+/home/naite/TCP Echo Server/include/common.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+fcntl.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+
+/home/naite/TCP Echo Server/src/server_init.h
+
