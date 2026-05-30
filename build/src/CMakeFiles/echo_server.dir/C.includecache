@@ -6,7 +6,23 @@
 
 #IncludeRegexTransform: 
 
+../include/common.h
+
 /home/naite/TCP Echo Server/include/common.h
+
+/home/naite/TCP Echo Server/src/epoll_manager.c
+epoll_manager.h
+/home/naite/TCP Echo Server/src/epoll_manager.h
+stdio.h
+-
+unistd.h
+-
+errno.h
+-
+
+/home/naite/TCP Echo Server/src/epoll_manager.h
+sys/epoll.h
+-
 
 /home/naite/TCP Echo Server/src/main.c
 stdio.h
@@ -15,10 +31,14 @@ stdlib.h
 -
 unistd.h
 -
-../include/common.h
-/home/naite/TCP Echo Server/include/common.h
+signal.h
+-
+common.h
+/home/naite/TCP Echo Server/src/common.h
 server_init.h
 /home/naite/TCP Echo Server/src/server_init.h
+epoll_manager.h
+/home/naite/TCP Echo Server/src/epoll_manager.h
 
 /home/naite/TCP Echo Server/src/server_init.c
 server_init.h

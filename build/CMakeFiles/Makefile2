@@ -92,12 +92,12 @@ src/clean: src/CMakeFiles/echo_server.dir/clean
 src/CMakeFiles/echo_server.dir/all:
 	$(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/depend
 	$(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/naite/TCP Echo Server/build/CMakeFiles" --progress-num=1,2,3 "Built target echo_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/naite/TCP Echo Server/build/CMakeFiles" --progress-num=1,2,3,4 "Built target echo_server"
 .PHONY : src/CMakeFiles/echo_server.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/echo_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/naite/TCP Echo Server/build/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/naite/TCP Echo Server/build/CMakeFiles" 4
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/echo_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/naite/TCP Echo Server/build/CMakeFiles" 0
 .PHONY : src/CMakeFiles/echo_server.dir/rule

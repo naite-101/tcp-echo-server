@@ -1,0 +1,42 @@
+{
+    // 文件关联：.h 和 .c 文件都用 C 语言语法
+    "files.associations": {
+        "*.h": "c",
+        "*.c": "c"
+    },
+    
+    // C/C++ 扩展配置
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    
+    // 头文件搜索路径
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/src",
+        "/usr/include",
+        "/usr/local/include"
+    ],
+    
+    // 排除不需要搜索的文件（提高性能）
+    "files.exclude": {
+        "**/build": true,
+        "**/*.o": true
+    },
+    
+    // 保存时自动格式化
+    "editor.formatOnSave": true,
+    
+    // 制表符大小
+    "editor.tabSize": 4,
+    
+    // 终端字体大小
+    "terminal.integrated.fontSize": 14,
+    
+    // 显示行号
+    "editor.lineNumbers": "on",
+    
+    // 自动补全大小写敏感
+    "editor.matchBrackets": "always"
+}
