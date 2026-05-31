@@ -66,7 +66,71 @@ void handle_accept(int listen_fd ,int epfd){
     
 }
 
+//读取客户端的数据
 void handle_client_data (int client_fd, int epfd)
 {
-    printf("客户端fd=%d 有数据可读\n",client_fd);
+    //设置缓冲区
+    char buf[4096];
+
+    //无限循环
+    while (1)
+    {
+        //从客户端接受数据
+        //ssize_t - 返回值
+        ssize_t n = recv(client_fd,buf ,sizeof(buf),0);
+        //如果接受成功
+        if (n>0)
+        {
+            printf("收到数据: fd = %d,长度=%ld,内容=%.*s",client_fd,n,(int )n,buf);
+
+            // 记录返回了多少数据
+            ssize_t sent =0;
+            //确保所以的数据都发送完毕
+            while (sent<n)
+            {
+                //把数据发送到客户端
+                ssize_t ret = send(client_fd,buf + sent,n - sent,0);
+                //发送失败
+                if (ret ==-1)
+                {
+                    //判断是不是缓冲区空了
+                    if (errno == EAGAIN || errno == EWOULDBLOCK)
+                    {
+                        break;
+                    }
+                    perror("send");
+                    goto error;
+                }
+                //更新发送的进度
+                sent += ret;
+            }
+            
+        }
+        //客户端关闭连接
+        else if (n == 0)
+        {
+            printf("客户端 fd=%d 主动断开连接\n",client_fd);
+            goto cleanup;
+        }
+        //n==-1,接受失败
+        else 
+        {
+            //失败原因是缓冲区空了，没有数据可以读
+            if (errno == EAGAIN || errno == EWOULDBLOCK)
+            {
+                break;
+            }
+            perror("recv");
+            goto cleanup;
+        }
+    }
+        return;
+    error:
+        perror("handle_client_data error");    
+    
+    cleanup:
+        //不再监听这个socket
+        epoll_del_fd(epfd,client_fd);
+        close(client_fd);
+    
 }
