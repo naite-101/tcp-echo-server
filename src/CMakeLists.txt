@@ -9,6 +9,7 @@ set(SOURCES
     main.c
     server_init.c
     epoll_manager.c
+    connection.c
 )
 
 # 生成可执行文件

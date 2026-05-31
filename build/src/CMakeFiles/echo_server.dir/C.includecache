@@ -10,6 +10,28 @@
 
 /home/naite/TCP Echo Server/include/common.h
 
+/home/naite/TCP Echo Server/src/connection.c
+../include/common.h
+/home/naite/TCP Echo Server/include/common.h
+epoll_manager.h
+/home/naite/TCP Echo Server/src/epoll_manager.h
+stdio.h
+-
+unistd.h
+-
+fcntl.h
+-
+errno.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+
+/home/naite/TCP Echo Server/src/connection.h
+
 /home/naite/TCP Echo Server/src/epoll_manager.c
 epoll_manager.h
 /home/naite/TCP Echo Server/src/epoll_manager.h
@@ -39,6 +61,8 @@ server_init.h
 /home/naite/TCP Echo Server/src/server_init.h
 epoll_manager.h
 /home/naite/TCP Echo Server/src/epoll_manager.h
+connection.h
+/home/naite/TCP Echo Server/src/connection.h
 
 /home/naite/TCP Echo Server/src/server_init.c
 server_init.h

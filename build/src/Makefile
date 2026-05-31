@@ -125,6 +125,33 @@ echo_server/fast:
 	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/build
 .PHONY : echo_server/fast
 
+connection.o: connection.c.o
+
+.PHONY : connection.o
+
+# target to build an object file
+connection.c.o:
+	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/connection.c.o
+.PHONY : connection.c.o
+
+connection.i: connection.c.i
+
+.PHONY : connection.i
+
+# target to preprocess a source file
+connection.c.i:
+	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/connection.c.i
+.PHONY : connection.c.i
+
+connection.s: connection.c.s
+
+.PHONY : connection.s
+
+# target to generate assembly for a file
+connection.c.s:
+	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/connection.c.s
+.PHONY : connection.c.s
+
 epoll_manager.o: epoll_manager.c.o
 
 .PHONY : epoll_manager.o
@@ -215,6 +242,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... echo_server"
+	@echo "... connection.o"
+	@echo "... connection.i"
+	@echo "... connection.s"
 	@echo "... epoll_manager.o"
 	@echo "... epoll_manager.i"
 	@echo "... epoll_manager.s"

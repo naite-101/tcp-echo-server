@@ -35,6 +35,16 @@ int epoll_add_fd(int epfd, int fd, uint32_t events)
     }
     return 0;
 }
+// 从epoll中删除一个文件描述符
+int epoll_del_fd(int epfd, int fd)
+{
+    if (epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL) == -1)
+    {
+        perror("epoll_ctl DEL");
+        return -1;
+    }
+    return 0;
+}
 // 等待epoll实例上注册的文件描述符发生
 int epoll_wait_events(int epfd, struct epoll_event *events, int max_events, int timeout)
 {
