@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/naite/TCP Echo Server/src/connection.c" "/home/naite/TCP Echo Server/build/src/CMakeFiles/echo_server.dir/connection.c.o"
   "/home/naite/TCP Echo Server/src/epoll_manager.c" "/home/naite/TCP Echo Server/build/src/CMakeFiles/echo_server.dir/epoll_manager.c.o"
+  "/home/naite/TCP Echo Server/src/logger.c" "/home/naite/TCP Echo Server/build/src/CMakeFiles/echo_server.dir/logger.c.o"
   "/home/naite/TCP Echo Server/src/main.c" "/home/naite/TCP Echo Server/build/src/CMakeFiles/echo_server.dir/main.c.o"
   "/home/naite/TCP Echo Server/src/server_init.c" "/home/naite/TCP Echo Server/build/src/CMakeFiles/echo_server.dir/server_init.c.o"
   )

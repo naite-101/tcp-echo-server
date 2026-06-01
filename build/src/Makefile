@@ -179,6 +179,33 @@ epoll_manager.c.s:
 	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/epoll_manager.c.s
 .PHONY : epoll_manager.c.s
 
+logger.o: logger.c.o
+
+.PHONY : logger.o
+
+# target to build an object file
+logger.c.o:
+	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/logger.c.o
+.PHONY : logger.c.o
+
+logger.i: logger.c.i
+
+.PHONY : logger.i
+
+# target to preprocess a source file
+logger.c.i:
+	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/logger.c.i
+.PHONY : logger.c.i
+
+logger.s: logger.c.s
+
+.PHONY : logger.s
+
+# target to generate assembly for a file
+logger.c.s:
+	cd "/home/naite/TCP Echo Server/build" && $(MAKE) -f src/CMakeFiles/echo_server.dir/build.make src/CMakeFiles/echo_server.dir/logger.c.s
+.PHONY : logger.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -248,6 +275,9 @@ help:
 	@echo "... epoll_manager.o"
 	@echo "... epoll_manager.i"
 	@echo "... epoll_manager.s"
+	@echo "... logger.o"
+	@echo "... logger.i"
+	@echo "... logger.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

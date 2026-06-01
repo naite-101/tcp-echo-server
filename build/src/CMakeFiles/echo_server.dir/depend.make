@@ -4,13 +4,18 @@
 src/CMakeFiles/echo_server.dir/connection.c.o: ../include/common.h
 src/CMakeFiles/echo_server.dir/connection.c.o: ../src/connection.c
 src/CMakeFiles/echo_server.dir/connection.c.o: ../src/epoll_manager.h
+src/CMakeFiles/echo_server.dir/connection.c.o: ../src/logger.h
 
 src/CMakeFiles/echo_server.dir/epoll_manager.c.o: ../src/epoll_manager.c
 src/CMakeFiles/echo_server.dir/epoll_manager.c.o: ../src/epoll_manager.h
 
+src/CMakeFiles/echo_server.dir/logger.c.o: ../src/logger.c
+src/CMakeFiles/echo_server.dir/logger.c.o: ../src/logger.h
+
 src/CMakeFiles/echo_server.dir/main.c.o: ../include/common.h
 src/CMakeFiles/echo_server.dir/main.c.o: ../src/connection.h
 src/CMakeFiles/echo_server.dir/main.c.o: ../src/epoll_manager.h
+src/CMakeFiles/echo_server.dir/main.c.o: ../src/logger.h
 src/CMakeFiles/echo_server.dir/main.c.o: ../src/main.c
 src/CMakeFiles/echo_server.dir/main.c.o: ../src/server_init.h
 

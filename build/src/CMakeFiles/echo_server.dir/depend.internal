@@ -5,13 +5,18 @@ src/CMakeFiles/echo_server.dir/connection.c.o
  /home/naite/TCP Echo Server/include/common.h
  /home/naite/TCP Echo Server/src/connection.c
  /home/naite/TCP Echo Server/src/epoll_manager.h
+ /home/naite/TCP Echo Server/src/logger.h
 src/CMakeFiles/echo_server.dir/epoll_manager.c.o
  /home/naite/TCP Echo Server/src/epoll_manager.c
  /home/naite/TCP Echo Server/src/epoll_manager.h
+src/CMakeFiles/echo_server.dir/logger.c.o
+ /home/naite/TCP Echo Server/src/logger.c
+ /home/naite/TCP Echo Server/src/logger.h
 src/CMakeFiles/echo_server.dir/main.c.o
  ../include/common.h
  /home/naite/TCP Echo Server/src/connection.h
  /home/naite/TCP Echo Server/src/epoll_manager.h
+ /home/naite/TCP Echo Server/src/logger.h
  /home/naite/TCP Echo Server/src/main.c
  /home/naite/TCP Echo Server/src/server_init.h
 src/CMakeFiles/echo_server.dir/server_init.c.o

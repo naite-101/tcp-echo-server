@@ -7,6 +7,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "logger.h"
 
 //接受等待中的客户端连接
 void handle_accept(int listen_fd ,int epfd){
@@ -29,7 +30,7 @@ void handle_accept(int listen_fd ,int epfd){
             {
                 break;
             }
-            perror("accept");
+            log_error("accept failed");
             break;
         }
         //获取client_fd当前的状态
@@ -37,7 +38,7 @@ void handle_accept(int listen_fd ,int epfd){
         //判断是否获取成功
         if (flags ==-1)
         {
-            perror("fcntl F_GETFL");
+            log_error("fcntl F_GETFL failed");
             close(client_fd);
             continue;
         }
@@ -45,7 +46,7 @@ void handle_accept(int listen_fd ,int epfd){
         //F_SETFL - 设置标志命令，O_NONBLOCK-非阻塞标志，
         if (fcntl(client_fd,F_SETFL,flags | O_NONBLOCK) == -1)
         {
-            perror("fcntl,F_SETFL");
+            log_error("fcntl,F_SETFL failed");
             close(client_fd);
             continue;
         }
@@ -60,7 +61,7 @@ void handle_accept(int listen_fd ,int epfd){
         char ip[INET_ADDRSTRLEN];
         //把二进制转换成字符串
         inet_ntop(AF_INET,&client_addr.sin_addr,ip,sizeof(ip));
-        printf("新客户端连接:fd=%d,IP=%s,端口=%d\n",client_fd, ip ,ntohs(client_addr.sin_port));
+        log_connect(client_fd, &client_addr);
     }
     
     
@@ -81,7 +82,7 @@ void handle_client_data (int client_fd, int epfd)
         //如果接受成功
         if (n>0)
         {
-            printf("收到数据: fd = %d,长度=%ld,内容=%.*s",client_fd,n,(int )n,buf);
+            log_recv(client_fd, buf, n); 
 
             // 记录返回了多少数据
             ssize_t sent =0;
@@ -98,7 +99,7 @@ void handle_client_data (int client_fd, int epfd)
                     {
                         break;
                     }
-                    perror("send");
+                    log_error("send sailed");
                     goto error;
                 }
                 //更新发送的进度
@@ -109,7 +110,7 @@ void handle_client_data (int client_fd, int epfd)
         //客户端关闭连接
         else if (n == 0)
         {
-            printf("客户端 fd=%d 主动断开连接\n",client_fd);
+            log_disconnect(client_fd); 
             goto cleanup;
         }
         //n==-1,接受失败
@@ -120,16 +121,16 @@ void handle_client_data (int client_fd, int epfd)
             {
                 break;
             }
-            perror("recv");
+            log_error("recv failde");
             goto cleanup;
         }
     }
         return;
     error:
-        perror("handle_client_data error");    
+        log_error("handle_client_data error");    
     
     cleanup:
-        //不再监听这个socket
+        //不再监听这个socket 
         epoll_del_fd(epfd,client_fd);
         close(client_fd);
     
