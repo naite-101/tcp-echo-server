@@ -4,6 +4,7 @@
 #include <arpa/inet.h>
 #include "logger.h"
 #include <stdio.h>
+#include <stdarg.h>
 
 // 静态全局的变量
 static LogLevel current_level = LOG_LEVEL_INFO;
@@ -36,7 +37,7 @@ void log_connect(int fd, struct sockaddr_in *addr)
     inet_ntop(AF_INET, &addr->sin_addr, ip, sizeof(ip));
 
     char msg[256];
-    snprintf(msg, sizeof(msg), "客户端连接: fd = %d,ip=$s ,port=%d", fd, ip, ntohs(addr->sin_port));
+    snprintf(msg, sizeof(msg), "客户端连接: fd = %d,ip=%s ,port=%d", fd, ip, ntohs(addr->sin_port));
     log_print(LOG_LEVEL_INFO, "CONNECT", msg);
 }
 
@@ -56,13 +57,30 @@ void log_disconnect(int fd)
     log_print(LOG_LEVEL_INFO, "DISCONNECT", msg);
 }
 
-void log_error(const char *msg)
+void log_error(const char *fmt, ...)
 {
+    if (LOG_LEVEL_ERROR < current_level)
+        return;
+
+    char msg[512];
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(msg, sizeof(msg), fmt, args);
+    va_end(args);
+
     log_print(LOG_LEVEL_ERROR, "ERROR", msg);
 }
 
-void log_info(const char *msg)
+void log_info(const char *fmt, ...)
 {
+    if (LOG_LEVEL_INFO < current_level)
+        return;
+
+    char msg[512];
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(msg, sizeof(msg), fmt, args);
+    va_end(args);
     log_print(LOG_LEVEL_INFO, "INFO", msg);
 }
 

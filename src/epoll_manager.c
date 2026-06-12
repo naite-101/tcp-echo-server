@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
+#include <logger.h>
 
 // 创建并且初始化一个epoll
 int epoll_init(void)
@@ -11,10 +12,10 @@ int epoll_init(void)
     // 判断epoll_create1是否调用失败
     if (epfd == -1)
     {
-        perror("epoll_create1");
+        log_error("epoll_create1 failed");
         return -1;
     }
-    printf("epoll 实例创建成功,epfd = %d\n", epfd);
+    log_info("epoll 实例创建成功,epfd = %d\n", epfd);
     return epfd;
 }
 
@@ -30,7 +31,7 @@ int epoll_add_fd(int epfd, int fd, uint32_t events)
     // 在epoll中添加一个文件描述符是否成功
     if (epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &ev) == -1)
     {
-        perror("epoll_ctl ADD");
+        log_error("epoll_ctl ADD");
         return -1;
     }
     return 0;
@@ -40,7 +41,7 @@ int epoll_del_fd(int epfd, int fd)
 {
     if (epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL) == -1)
     {
-        perror("epoll_ctl DEL");
+        log_error("epoll_ctl DEL failed");
         return -1;
     }
     return 0;
@@ -59,7 +60,7 @@ int epoll_wait_events(int epfd, struct epoll_event *events, int max_events, int 
     // 调用函数出错
     if (nfds == -1)
     {
-        perror("epoll_wait");
+        log_error("epoll_wait failed");
         return -1;
     }
     return nfds;

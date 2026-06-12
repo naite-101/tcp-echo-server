@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <logger.h>
 
 // 设置文件描述符为非阻塞模式
 int set_nonblocking(int fd)
@@ -17,7 +18,7 @@ int set_nonblocking(int fd)
     if (flags == -1)
     {
         // 如果失败了就打印错误的信息
-        perror("fcntl F_GETFL");
+        log_error("fcntl F_GETFL failed");
         return -1;
     }
 
@@ -27,7 +28,7 @@ int set_nonblocking(int fd)
     // 把flags的状态设置到fd中失败
     if (fcntl(fd, F_SETFL, flags) == -1)
     {
-        perror("fcntl F_SETFL");
+        log_error("fcntl F_SETFL failed");
         return -1;
     }
     return 0;
@@ -47,7 +48,7 @@ int init_server(int port)
     // 创建失败
     if (listen_fd == -1)
     {
-        perror("socket");
+        log_error("socket failed");
         return -1;
     }
 
@@ -55,7 +56,7 @@ int init_server(int port)
     // setsockopt是否设置成功
     if (setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse)) == -1)
     {
-        perror("setsockopt");
+        log_error("setsockopt failed");
         close(listen_fd);
         return -1;
     }
@@ -72,7 +73,7 @@ int init_server(int port)
     // 绑定地址到linsten——fd中
     if (bind(listen_fd, (struct sockaddr *)&addr, sizeof(addr)) == -1)
     {
-        perror("bind");
+        log_error("bind failed");
         close(listen_fd);
         return -1;
     }
@@ -80,7 +81,7 @@ int init_server(int port)
     // 开始监听TCP的连接请求
     if (listen(listen_fd, BACKLOG) == -1)
     {
-        perror("listen");
+        log_error("listen failed");
         close(listen_fd);
         return -1;
     }
@@ -91,6 +92,6 @@ int init_server(int port)
         close(listen_fd);
         return -1;
     }
-    printf("服务器初始化成功，监听端口：%d\n", port);
+    log_error("服务器初始化成功，监听端口：%d\n", port);
     return listen_fd;
 }
